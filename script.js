@@ -1,14 +1,10 @@
 /* HUJAN LOVE */
 
-function createPetal(){
+function createPetal() {
 
 const petal = document.createElement("div");
 
-petal.classList.add("petal");
-
-const flowers = [
-"❤️",
-"❤️",
+const hearts = [
 "❤️",
 "💖",
 "💕",
@@ -17,29 +13,30 @@ const flowers = [
 "💘"
 ];
 
-petal.innerHTML =
-flowers[Math.floor(Math.random()*flowers.length)];
+petal.className = "petal";
+
+petal.textContent =
+hearts[Math.floor(Math.random() * hearts.length)];
 
 petal.style.left =
 Math.random() * 100 + "vw";
 
 petal.style.fontSize =
-(25 + Math.random() * 25) + "px";
+(20 + Math.random() * 20) + "px";
 
 petal.style.animationDuration =
 (8 + Math.random() * 6) + "s";
 
 petal.style.opacity =
-0.6 + Math.random() * 0.4;
+0.5 + Math.random() * 0.5;
 
 document.body.appendChild(petal);
 
-setTimeout(()=>{
-
+setTimeout(() => {
 petal.remove();
-
-},15000);
+}, 15000);
 
 }
 
-setInterval(createPetal,300);
+setInterval(createPetal, 300);
+

@@ -2,11 +2,21 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
+font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#050505;
+background:
+radial-gradient(circle at top,
+rgba(255,0,0,.15),
+transparent 40%),
+linear-gradient(
+to bottom,
+#1a0000,
+#2b0000,
+#120000
+);
+
 overflow:hidden;
 color:white;
 height:100vh;
@@ -22,6 +32,7 @@ display:none;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+padding:20px;
 }
 
 .active{
@@ -46,6 +57,8 @@ text-align:center;
 
 .intro-box h1{
 margin-bottom:30px;
+font-size:40px;
+text-shadow:0 0 15px rgba(255,0,0,.5);
 }
 
 button{
@@ -54,6 +67,14 @@ border:none;
 border-radius:50px;
 cursor:pointer;
 font-size:18px;
+background:#7a0000;
+color:white;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#a00000;
 }
 
 /* AMPLOP */
@@ -73,7 +94,7 @@ cursor:pointer;
 position:absolute;
 width:100%;
 height:100%;
-background:#222;
+background:#5a0000;
 border-radius:5px;
 }
 
@@ -82,7 +103,7 @@ position:absolute;
 bottom:0;
 width:100%;
 height:120px;
-background:#333;
+background:#7a0000;
 clip-path:polygon(0 0,50% 60%,100% 0,100% 100%,0 100%);
 }
 
@@ -90,7 +111,7 @@ clip-path:polygon(0 0,50% 60%,100% 0,100% 100%,0 100%);
 position:absolute;
 width:100%;
 height:120px;
-background:#444;
+background:#920000;
 transform-origin:top;
 transition:1s;
 clip-path:polygon(0 0,100% 0,50% 100%);
@@ -133,16 +154,40 @@ margin-top:30px;
 
 .letter-box{
 max-width:700px;
-background:rgba(255,255,255,.05);
+width:92%;
+height:70vh;
+overflow-y:auto;
+
+background:rgba(255,255,255,.08);
+
 padding:30px;
+
 border-radius:20px;
+
 backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,.1);
+
+box-shadow:
+0 0 25px rgba(255,0,0,.25);
+
+scroll-behavior:smooth;
+}
+
+.letter-box::-webkit-scrollbar{
+width:6px;
+}
+
+.letter-box::-webkit-scrollbar-thumb{
+background:#a00000;
+border-radius:10px;
 }
 
 .fade-text{
 line-height:2;
 margin-top:20px;
 animation:appear 3s ease;
+font-size:18px;
 }
 
 @keyframes appear{
@@ -168,7 +213,10 @@ height:70vh;
 position:absolute;
 background:white;
 padding:10px 10px 40px;
-box-shadow:0 0 20px rgba(255,255,255,.15);
+
+box-shadow:
+0 0 25px rgba(255,255,255,.2);
+
 animation:drop 2s ease forwards;
 }
 
@@ -228,4 +276,49 @@ opacity:1;
 transform:translateY(110vh) rotate(360deg);
 opacity:0;
 }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.intro-box h1{
+font-size:28px;
+}
+
+.menu-buttons{
+flex-direction:column;
+}
+
+.polaroid img{
+width:140px;
+height:180px;
+}
+
+.p1{
+left:2%;
+}
+
+.p2{
+left:30%;
+}
+
+.p3{
+left:58%;
+}
+
+.fade-text{
+font-size:16px;
+line-height:1.9;
+}
+
+button{
+font-size:15px;
+padding:12px 20px;
+}
+
+.letter-box{
+height:75vh;
+}
+
 }

@@ -1,42 +1,90 @@
+const pages = document.querySelectorAll(".page");
+
+function showPage(id){
+pages.forEach(page=>{
+page.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+}
+
+const music = document.getElementById("music");
+
+document.getElementById("startBtn").addEventListener("click",()=>{
+
+showPage("envelopePage");
+
+music.play().catch(()=>{});
+
+});
+
+document.getElementById("envelope").addEventListener("click",()=>{
+
+document.getElementById("envelope").classList.add("open");
+
+setTimeout(()=>{
+showPage("menuPage");
+},1000);
+
+});
+
+document.getElementById("galleryBtn").addEventListener("click",()=>{
+showPage("galleryPage");
+});
+
+document.getElementById("letterBtn").addEventListener("click",()=>{
+showPage("letterPage");
+});
+
+document.querySelectorAll(".backBtn").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+showPage("menuPage");
+});
+
+});
+
 /* HUJAN LOVE */
 
-function createPetal() {
+setInterval(()=>{
 
-const petal = document.createElement("div");
+const love = document.createElement("div");
 
 const hearts = [
 "❤️",
-"💖",
 "💕",
+"💖",
 "💗",
-"💞",
-"💘"
+"💞"
 ];
 
-petal.className = "petal";
+love.innerHTML =
+hearts[Math.floor(Math.random()*hearts.length)];
 
-petal.textContent =
-hearts[Math.floor(Math.random() * hearts.length)];
+love.style.position = "fixed";
+love.style.left = Math.random()*100 + "vw";
+love.style.top = "-50px";
+love.style.fontSize = (20 + Math.random()*25) + "px";
+love.style.pointerEvents = "none";
+love.style.zIndex = "999";
 
-petal.style.left =
-Math.random() * 100 + "vw";
+document.body.appendChild(love);
 
-petal.style.fontSize =
-(20 + Math.random() * 20) + "px";
+let pos = -50;
 
-petal.style.animationDuration =
-(8 + Math.random() * 6) + "s";
+const fall = setInterval(()=>{
 
-petal.style.opacity =
-0.5 + Math.random() * 0.5;
+pos += 3;
 
-document.body.appendChild(petal);
+love.style.top = pos + "px";
 
-setTimeout(() => {
-petal.remove();
-}, 15000);
+if(pos > window.innerHeight){
+
+clearInterval(fall);
+love.remove();
 
 }
 
-setInterval(createPetal, 300);
+},20);
 
+},300);

@@ -91,6 +91,7 @@ background:#a00000;
 
 .envelope-container{
 text-align:center;
+position:relative;
 z-index:20;
 }
 
@@ -99,7 +100,8 @@ position:relative;
 width:320px;
 height:220px;
 cursor:pointer;
-z-index:20;
+z-index:50;
+margin:auto;
 }
 
 .envelope-back{
@@ -107,7 +109,7 @@ position:absolute;
 width:100%;
 height:100%;
 background:#5a0000;
-border-radius:5px;
+border-radius:8px;
 }
 
 .envelope-front{
@@ -116,6 +118,7 @@ bottom:0;
 width:100%;
 height:120px;
 background:#7a0000;
+
 clip-path:polygon(
 0 0,
 50% 60%,
@@ -123,6 +126,8 @@ clip-path:polygon(
 100% 100%,
 0 100%
 );
+
+z-index:3;
 }
 
 .envelope-flap{
@@ -130,13 +135,17 @@ position:absolute;
 width:100%;
 height:120px;
 background:#920000;
-transform-origin:top;
-transition:1s;
+
+transform-origin:top center;
+transition:1s ease;
+
 clip-path:polygon(
 0 0,
 100% 0,
 50% 100%
 );
+
+z-index:4;
 }
 
 .envelope.open .envelope-flap{
@@ -146,7 +155,6 @@ transform:rotateX(180deg);
 .letter-preview{
 position:absolute;
 left:50%;
-transform:translateX(-50%);
 top:40px;
 
 width:240px;
@@ -161,8 +169,16 @@ justify-content:center;
 
 font-weight:bold;
 
-transition:1s;
-z-index:-1;
+transform:translateX(-50%);
+transition:1s ease;
+
+z-index:2;
+pointer-events:none;
+
+border-radius:8px;
+
+box-shadow:
+0 5px 15px rgba(0,0,0,.25);
 }
 
 .envelope.open .letter-preview{
